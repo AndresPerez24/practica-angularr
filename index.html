@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="contact">
+<head>
+  <title>API Request</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-controller="contactController as contactCtrl">
+  
+
+  <div class="container js-container">
+  <form ng-submit="contactCtrl.addContact()">
+  	<label for="first-name">first name</label>
+  	<input ng-model="contactCtrl.firstName" type="text" id="first-name">
+  	<label for="last-name">last name</label>
+  	<input ng-model="contactCtrl.lastName" type="text" id="last-name">
+  	<label for="birthdate">birthdate</label>
+  	<input ng-model="contactCtrl.birthdate" type="text" id="birthdate">
+  	<label for="image">image</label>
+  	<input ng-model="contactCtrl.avatarUrl" type="text" id="image">
+  	<button type="submit">save</button>
+  </form>
+    <h1 class="addresbook__title">Mi Lista de Contactos</h1>
+    <ul class="addresbook-list">
+    	<li list-contact ng-init="contact.favorite = false" ng-repeat="contact in contactCtrl.contacts" class="addresbook-list__item">
+    	<list-contact></list-contact>
+    	</li>
+    </ul>
+    <h1 class="addresbook__title">Favoritos</h1>
+    <ul class="addresbook-list">
+    	<li list-favorite ng-if="contact.favorite" ng-repeat="contact in contactCtrl.contacts" class="addresbook-list__item">
+    		<div class="addresbook-list__image" style="background-image: url({{contact.avatar_url}})"></div>
+    		 {{contact.first_name}} {{contact.last_name}} ({{contact.birthdate}}) - {{contact.phone}}
+    		 <button ng-click="contactCtrl.removeItem(contact)">remove</button>
+    		 <button ng-click="contact.favorite=!contact.favorite">toggle favorite</button>
+    	</li>
+    </ul>
+  </div>
+
+  <script src="angular.min.js"></script> 
+  <script src="script.js"></script>
+</body>
+</html>
