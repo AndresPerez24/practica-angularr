@@ -1,0 +1,4 @@
+    <div class="addresbook-list__image" style="background-image: url({{contact.avatar_url}})"></div>
+    {{contact.first_name}} {{contact.last_name}} ({{contact.birthdate}}) 
+    <button ng-click="contactCtrl.removeItem(contact)">remove</button>
+    <button ng-click="contact.favorite=!contact.favorite">toggle favorite</button>

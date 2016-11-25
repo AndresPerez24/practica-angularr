@@ -1,5 +1,4 @@
 var gulp 		= require('gulp'),
-	uglify 		= require('gulp-uglify'),
 	plumber 	= require('gulp-plumber'),
 	gls			= require('gulp-live-server');
 
@@ -7,27 +6,14 @@ var gulp 		= require('gulp'),
 var options = {
 	serve : {
 		dir: 'application',
-		port: 3000,
-		files : ['*.html', 'styles.css', 'script.js']
+		port: 8000,
+		files : ['application/index.html', 'application/assets/stylesheet/styles.css', 'application/assets/javascripts/script.js']
 	}
 };
 
 
-
-gulp.task('scripts', function(){
-	gulp.src('*.js')
-	.pipe(plumber())
-	.pipe(uglify())
-	.pipe(gulp.dest('minjs'))
-});
-
-gulp.task('styles', function(){
-
-});
-
-
 gulp.task('watch', function(){
-	gulp.watch('*.js', ['scripts']);
+	gulp.watch('application/assets/javascripts/*.js', ['scripts']);
 });
 
 gulp.task('serve', function() {
@@ -38,4 +24,4 @@ gulp.task('serve', function() {
   });
 });
 
-gulp.task('default', ['scripts', 'styles', 'watch', 'serve']);
+gulp.task('default', ['watch', 'serve']);

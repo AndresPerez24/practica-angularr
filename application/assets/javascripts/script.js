@@ -1,12 +1,8 @@
 (function(){
 
-  
-
-  var apiUrl = 'https://koombea-dummy-api.herokuapp.com/people';
-
   var app = angular.module('contact', []);
 
-    app.controller('contactController', ['$http', function ($http) { 
+    app.controller('contactController', ['$http', function ($http, contactList) {
 
       var vm = this;
 
@@ -28,7 +24,7 @@
         console.log(index);
       }
 
-      $http.get(apiUrl)
+      contactList.all()
         .then(function (response) {
           vm.contacts = response.data.people;
           console.log(vm.contacts);
@@ -41,11 +37,9 @@
     app.directive('listContact', function(){
       return {
         restrict : 'E',
-        templateURL: 'list-contact.html'
+        templateUrl: 'assets/javascripts/directives/list-contact.html'
       };
     });
-
-
 
 })();
 

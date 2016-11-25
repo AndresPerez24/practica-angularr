@@ -3,11 +3,10 @@
 <head>
   <title>API Request</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/stylesheet/styles.css">
 </head>
 <body ng-controller="contactController as contactCtrl">
-  
-
+ 
   <div class="container js-container">
   <form ng-submit="contactCtrl.addContact()">
   	<label for="first-name">first name</label>
@@ -22,8 +21,8 @@
   </form>
     <h1 class="addresbook__title">Mi Lista de Contactos</h1>
     <ul class="addresbook-list">
-    	<li list-contact ng-init="contact.favorite = false" ng-repeat="contact in contactCtrl.contacts" class="addresbook-list__item">
-    	<list-contact></list-contact>
+    	<li ng-init="contact.favorite = false" ng-repeat="contact in contactCtrl.contacts" class="addresbook-list__item">
+    		<list-contact></list-contact>
     	</li>
     </ul>
     <h1 class="addresbook__title">Favoritos</h1>
@@ -37,7 +36,8 @@
     </ul>
   </div>
 
-  <script src="angular.min.js"></script> 
-  <script src="script.js"></script>
+  <script src="assets/javascripts/angular.min.js"></script> 
+  <script src="assets/javascripts/script.js"></script>
+  <script src="assets/javascripts/services/note.js"></script>
 </body>
 </html>
